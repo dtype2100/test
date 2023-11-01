@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/jw160/OneDrive/test/app/mlruns/0/e02a4aad657c4d0ab9672310407229c2/artifacts
+end_time: 1698842977865
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e02a4aad657c4d0ab9672310407229c2
+run_name: amusing-ram-845
+run_uuid: e02a4aad657c4d0ab9672310407229c2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1698842972156
+status: 3
+tags: []
+user_id: jw160

@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/jw160/OneDrive/test/app/mlruns/0/d3f88d4edd7c4e9b8ea894ca709239fa/artifacts
+end_time: 1698843220792
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d3f88d4edd7c4e9b8ea894ca709239fa
+run_name: unruly-ox-217
+run_uuid: d3f88d4edd7c4e9b8ea894ca709239fa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1698843215896
+status: 3
+tags: []
+user_id: jw160

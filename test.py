@@ -1,48 +1,91 @@
-import streamlit as st
-import pandas as pd
-from sklearn.preprocessing import LabelEncoder
+import uuid
 
-# select_target_label
-# drop_columns
-# drop_labels
-# label_encoder
-# prepro_datetime
+import mlflow
+import optuna
+from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
-def run():
-    uploaded_file = st.sidebar.file_uploader('csv 파일 업로드', type='csv')
-    updated_df = None
-    le = LabelEncoder()
-    if uploaded_file:
-        df = pd.read_csv(uploaded_file)
-        st.write(df)
 
-        col_list = df.columns.tolist()
+UNIQUE_PREFIX = str(uuid.uuid4())[:8]
 
-    # if uploaded_file is None:
-        
-    #     df = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6], 'C': [7, 8, 9], 'target': ['one', 'two', 'three']})
-    #     col_list = df.columns.tolist()
 
-        target_feture = st.sidebar.multiselect('Select Target Column', options=col_list)
-        drop_columns = st.sidebar.multiselect("Select drop columns", options=col_list)
-        drop_labels = st.sidebar.multiselect("Select drop labels", options=col_list)
-        label_encoder = st.sidebar.multiselect("label encoder", options=col_list)
-        prepro_datetime = st.sidebar.multiselect("Select prepro_datetime", options=col_list)
-    
-        if st.sidebar.button('start preprocessing'):
-            # updated_df = df
-            if drop_columns:
-                updated_df = df.drop(drop_columns, axis=1)
-            if drop_labels:
-                updated_df = df[df[drop_labels] != drop_labels]
-            if label_encoder:
-                st.write(label_encoder)
-                if updated_df is None:
-                    updated_df[label_encoder] = le.fit_transform(df[label_encoder[0]])
-                if updated_df is not None:
-                    updated_df[label_encoder] = le.fit_transform(updated_df[label_encoder[0]])
-            st.write(updated_df)
+def objective(trial):
+    #
+    # suggest new parameter
+    #
+    trial.suggest_int("n_estimators", 100, 1000, step=100)
+    trial.suggest_int("max_depth", 3, 10)
+
+    #
+    # mlflow logging run name
+    #
+    run_name = f"{UNIQUE_PREFIX}-{trial.number}"
+    with mlflow.start_run(run_name=run_name):
+        #
+        # log params
+        #
+        mlflow.log_params(trial.params)
+
+        #
+        # load data
+        #
+        iris = load_iris(as_frame=True)
+        X, y = iris["data"], iris["target"]
+
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=2024)
+
+        #
+        # train model
+        #
+        clf = RandomForestClassifier(
+            n_estimators=trial.params["n_estimators"], max_depth=trial.params["max_depth"], random_state=2024
+        )
+        clf.fit(X_train, y_train)
+
+        #
+        # evaluate train model
+        #
+        y_pred = clf.predict(X_test)
+        acc_score = accuracy_score(y_test, y_pred)
+        mlflow.log_metric("accuracy", acc_score)
+    return acc_score
+
+
+def train_best_model(params):
+    run_name = f"{UNIQUE_PREFIX}-best-model"
+    with mlflow.start_run(run_name=run_name):
+        #
+        # log parameter
+        #
+        mlflow.log_params(params)
+
+        #
+        # load data
+        #
+        iris = load_iris(as_frame=True)
+        X, y = iris["data"], iris["target"]
+
+        #
+        # train model
+        #
+        clf = RandomForestClassifier(
+            n_estimators=params["n_estimators"], max_depth=params["max_depth"], random_state=2024
+        )
+        clf.fit(X, y)
+    return clf
 
 
 if __name__ == "__main__":
-    run()
+    experiment_name = "hpo-tutorial"
+    mlflow.set_tracking_uri("http://0.0.0.0:5001")
+    mlflow.set_experiment(experiment_name)
+
+    sampler = optuna.samplers.RandomSampler(seed=2024)
+    study = optuna.create_study(sampler=sampler, study_name=experiment_name, direction="maximize")
+    study.optimize(objective, n_trials=5)
+
+    # get best_param
+    best_params = study.best_params
+    best_clf = train_best_model(best_params)

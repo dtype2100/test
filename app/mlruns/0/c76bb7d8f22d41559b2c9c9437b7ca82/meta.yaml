@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/jw160/OneDrive/test/app/mlruns/0/c76bb7d8f22d41559b2c9c9437b7ca82/artifacts
+end_time: 1698843550187
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c76bb7d8f22d41559b2c9c9437b7ca82
+run_name: serious-moose-147
+run_uuid: c76bb7d8f22d41559b2c9c9437b7ca82
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1698843546383
+status: 3
+tags: []
+user_id: jw160
