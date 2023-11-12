@@ -25,5 +25,6 @@
 # print(client.list_experiments())
 import kfp
 client = kfp.Client(host='http://localhost:3000')
+host='http://localhost:3000'
 print(client.list_experiments())
 # https://v1-5-branch.kubeflow.org/docs/components/pipelines/sdk/connect-api/
