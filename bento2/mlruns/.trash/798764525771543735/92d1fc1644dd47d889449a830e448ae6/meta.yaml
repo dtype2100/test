@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/798764525771543735/92d1fc1644dd47d889449a830e448ae6/artifacts
+deleted_time: 1699973077985
+end_time: null
+entry_point_name: ''
+experiment_id: '798764525771543735'
+lifecycle_stage: deleted
+run_id: 92d1fc1644dd47d889449a830e448ae6
+run_name: unleashed-croc-419
+run_uuid: 92d1fc1644dd47d889449a830e448ae6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1699971986532
+status: 1
+tags: []
+user_id: jw160

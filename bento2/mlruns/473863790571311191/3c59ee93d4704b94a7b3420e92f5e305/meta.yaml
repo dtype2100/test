@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/473863790571311191/3c59ee93d4704b94a7b3420e92f5e305/artifacts
+end_time: 1699973221909
+entry_point_name: ''
+experiment_id: '473863790571311191'
+lifecycle_stage: active
+run_id: 3c59ee93d4704b94a7b3420e92f5e305
+run_name: Best-rfc
+run_uuid: 3c59ee93d4704b94a7b3420e92f5e305
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1699973216104
+status: 3
+tags: []
+user_id: jw160
