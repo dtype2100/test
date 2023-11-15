@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/965524127353680956/b055d2c09d214a2199c3e204f79b3aa4/artifacts
+end_time: 1700060123784
+entry_point_name: ''
+experiment_id: '965524127353680956'
+lifecycle_stage: active
+run_id: b055d2c09d214a2199c3e204f79b3aa4
+run_name: Best_ada_model
+run_uuid: b055d2c09d214a2199c3e204f79b3aa4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1700060123495
+status: 4
+tags: []
+user_id: jw160
