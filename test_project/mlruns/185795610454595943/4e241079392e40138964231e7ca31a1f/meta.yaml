@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/185795610454595943/4e241079392e40138964231e7ca31a1f/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '185795610454595943'
+lifecycle_stage: active
+run_id: 4e241079392e40138964231e7ca31a1f
+run_name: wistful-carp-85
+run_uuid: 4e241079392e40138964231e7ca31a1f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1700753500778
+status: 1
+tags: []
+user_id: jw160

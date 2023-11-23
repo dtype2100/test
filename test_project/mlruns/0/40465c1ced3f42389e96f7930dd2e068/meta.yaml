@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/40465c1ced3f42389e96f7930dd2e068/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 40465c1ced3f42389e96f7930dd2e068
+run_name: indecisive-kit-140
+run_uuid: 40465c1ced3f42389e96f7930dd2e068
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1700753363854
+status: 1
+tags: []
+user_id: jw160
