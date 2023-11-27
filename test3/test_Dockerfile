@@ -1,0 +1,9 @@
+FROM python:3.8
+WORKDIR /usr/app
+
+RUN pip install -U pip &&\
+    pip install scikit-learn pandas
+
+COPY train.py train.py
+
+ENTRYPOINT "/bin/bash"

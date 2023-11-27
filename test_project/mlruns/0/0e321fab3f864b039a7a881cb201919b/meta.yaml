@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/0e321fab3f864b039a7a881cb201919b/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0e321fab3f864b039a7a881cb201919b
+run_name: illustrious-smelt-78
+run_uuid: 0e321fab3f864b039a7a881cb201919b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1700925040768
+status: 1
+tags: []
+user_id: jw160
