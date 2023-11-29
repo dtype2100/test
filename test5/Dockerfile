@@ -1,12 +1,13 @@
-FROM python:3.8-slim
+FROM amd/python:3.9-slim
 
-WORKDIR /app
+WORKDIR /usr/app
 
-COPY requirements.txt .
+# RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -U pip &&\
+    pip install scikit-learn==1.2.2 pandas==2.0.2
 
-RUN pip install --no-cache-dir -r requirements.txt
+COPY train.py train.py
 
-COPY . .
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-
+ENTRYPOINT "bin/bash"
